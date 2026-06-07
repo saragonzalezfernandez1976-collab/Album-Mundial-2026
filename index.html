@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏆 Album Mundial 2026</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>🏆 Album Mundial 2026</h1>
+            <p class="subtitle">Gestiona tu colección de cromos</p>
+        </header>
+
+        <!-- Statistics Section -->
+        <section class="stats">
+            <div class="stat-card">
+                <span class="stat-label">Cromos</span>
+                <span class="stat-value" id="totalCards">0</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-label">Duplicados</span>
+                <span class="stat-value" id="duplicateCards">0</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-label">Progreso</span>
+                <span class="stat-value" id="progress">0%</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-label">Selecciones</span>
+                <span class="stat-value" id="teams">32</span>
+            </div>
+        </section>
+
+        <!-- Control Panel -->
+        <section class="controls">
+            <h2>Agregar Cromos</h2>
+            <div class="control-group">
+                <select id="teamSelect">
+                    <option value="">-- Selecciona selección --</option>
+                </select>
+                <input type="number" id="cardNumber" placeholder="Número de cromo" min="1">
+                <button onclick="addCard()">+ Agregar</button>
+                <button onclick="addDuplicate()" class="btn-secondary">+ Duplicado</button>
+            </div>
+        </section>
+
+        <!-- Search and Filter -->
+        <section class="filter">
+            <input type="text" id="searchInput" placeholder="🔍 Buscar selección...">
+            <div class="filter-buttons">
+                <button onclick="filterByStatus('all')" class="filter-btn active">Todos</button>
+                <button onclick="filterByStatus('incomplete')" class="filter-btn">Incompletos</button>
+                <button onclick="filterByStatus('complete')" class="filter-btn">Completos</button>
+            </div>
+        </section>
+
+        <!-- Teams List -->
+        <section class="teams-section">
+            <h2>Mis Cromos por Selección</h2>
+            <div id="teamsList" class="teams-list">
+                <!-- Dinamically loaded -->
+            </div>
+        </section>
+
+        <!-- Action Buttons -->
+        <section class="actions">
+            <button onclick="exportData()" class="btn-export">📥 Descargar datos</button>
+            <button onclick="importData()" class="btn-import">📤 Cargar datos</button>
+            <button onclick="clearAll()" class="btn-danger">🗑️ Limpiar todo</button>
+        </section>
+
+        <!-- Hidden file input for import -->
+        <input type="file" id="fileInput" accept=".json" style="display: none;">
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
